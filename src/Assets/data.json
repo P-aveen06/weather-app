@@ -1,0 +1,119 @@
+[
+  {
+    "id":"0",
+    "name":"Mumbai",
+    "state":"Maharashtra",
+    "lat":"18.975",
+    "lon":"72.825833"
+  },
+  {
+  "id":"1",
+  "name":"Delhi",
+  "state":"Delhi",
+  "lat":"28.666667",
+  "lon":"77.216667"},
+
+  {"id":"2",
+  "name":"Bangalore",
+  "state":"Karnataka",
+  "lat":"12.983333",
+  "lon":"77.583333"},
+
+  {"id":"3",
+  "name":"Hyderabad",
+  "state":"Telangana",
+  "lat":"17.375278",
+  "lon":"78.474444"},
+
+  {"id":"4",
+  "name":"Ahmedabad",
+  "state":"Gujarat",
+  "lat":"23.033333",
+  "lon":"72.616667"},
+
+  {"id":"5",
+  "name":"Chennai",
+  "state":"Tamil Nadu",
+  "lat":"13.083333",
+  "lon":"80.283333"},
+  {
+    "id":"6",
+    "name":"Kolkata",
+    "state":"West Bengal",
+    "lat":"22.569722",
+    "lon":"88.369722"},
+
+    {"id":"7",
+    "name":"Surat",
+    "state":"Gujarat",
+    "lat":"20.966667",
+    "lon":"72.9"},
+
+    {"id":"8",
+    "name":"Pune",
+    "state":"Maharashtra",
+    "lat":"18.533333",
+    "lon":"73.866667"},
+
+    {"id":"9",
+    "name":"Jaipur",
+    "state":"Rajasthan",
+    "lat":"24.583333",
+    "lon":"86.85"},
+
+    {"id":"10",
+    "name":"Lucknow",
+    "state":"Uttar Pradesh",
+    "lat":"26.85",
+    "lon":"80.916667"},
+
+    {"id":"11",
+    "name":"Kanpur",
+    "state":"Uttar Pradesh",
+    "lat":"26.466667",
+    "lon":"80.35"},
+
+    {"id":"12",
+    "name":"Nagpur",
+    "state":"Maharashtra",
+    "lat":"23.3",
+    "lon":"82.3"},
+
+    {"id":"13",
+    "name":"Indore",
+    "state":"Madhya Pradesh",
+    "lat":"22.716667",
+    "lon":"75.833333"},
+
+    {"id":"14",
+    "name":"Thane",
+    "state":"Maharashtra",
+    "lat":"19.2",
+    "lon":"72.966667"},
+
+    {"id":"15",
+    "name":"Bhopal",
+    "state":"Madhya Pradesh",
+    "lat":"23.266667",
+    "lon":"77.4"},
+
+    {"id":"16",
+    "name":"Visakhapatnam",
+    "state":"Andhra Pradesh",
+    "lat":"17.7",
+    "lon":"83.3"},
+
+    {"id":"17",
+    "name":"Pimpri-Chinchwad",
+    "state":"Maharashtra",
+    "lat":"18.6279288",
+    "lon":"73.8009829"},
+
+    {"id":"18",
+    "name":"Patna",
+    "state":"Bihar",
+    "lat":"23.3",
+    "lon":"82.666667"}
+
+  ]
+  

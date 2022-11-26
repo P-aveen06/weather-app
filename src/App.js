@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import "primereact/resources/themes/bootstrap4-dark-blue/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
+import Home from "./Components/Home";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Weather from "./Components/Weather";
+import Settings from './Components/settings';
+import {Provider} from './Context';
+// import HomeTheme from "./Components/HomeTheme";
 function App() {
   return (
+    <Provider>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home/>}></Route>
+          <Route path="/weather" element={<Weather />}></Route>
+          {/* <Route path="/hometheme" element={<HomeTheme />}></Route> */}
+          <Route path="/settings" element={<Settings/>}></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
+    </Provider>
   );
 }
 
