@@ -4,8 +4,24 @@ import { Button } from "primereact/button";
 import { Context } from "../Context";
 import { Link } from "react-router-dom";
 const Settings = () => {
-  const { Primarycolor } = useContext(Context);
+  const isSecondary={
+    color:JSON.parse(localStorage.getItem('secondary'))
+  }
+  const isNotSecondary={
+    color:"white"
+  }
+  const isAccent={
+    backgroundColor:JSON.parse(localStorage.getItem('accent')),
+    color:'black'
+  }
+  const isNotAccent={
+    backgroundColor:'none',
+    color:'black'
+  }
+  const { Primarycolor,Secondarycolor,Accentcolor } = useContext(Context);
   const [PrimarycolorValue, setPrimarycolorValue] = Primarycolor;
+  const [SecondarycolorValue, setSecondarycolorValue] = Secondarycolor;
+  const [AccentcolorValue, setAccentcolorValue] = Accentcolor;
   const Primarycolors = [
     { name: "pink-50", value: "#fef6fa" },
     { name: "pink-100", value: "#fad3e7" },
@@ -18,8 +34,6 @@ const Settings = () => {
     { name: "pink-800", value: "#822854" },
     { name: "pink-900", value: "#5e1d3d" },
   ];
-  const { Secondarycolor } = useContext(Context);
-  const [SecondarycolorValue, setSecondarycolorValue] = Secondarycolor;
   const Secondarycolors = [
     { name: "indigo-50", value: "#f7f7fe" },
     { name: "indigo-100", value: "#dadafc" },
@@ -32,8 +46,6 @@ const Settings = () => {
     { name: "indigo-800", value: "#363885" },
     { name: "indigo-900", value: "#282960" },
   ];
-  const { Accentcolor } = useContext(Context);
-  const [AccentcolorValue, setAccentcolorValue] = Accentcolor;
   const Accentcolors = [
     { name: "teal-50", value: "#ffffff" },
     { name: "teal-100", value: "#c7eeea" },
@@ -50,13 +62,14 @@ const Settings = () => {
     <div className="Settings">
       <div className="Header flex justify-between">
         <div>
-          <p className="text-2">LOGO</p>
+          <p className="text-2" style={JSON.parse(localStorage.getItem('settheme'))?isSecondary:isNotSecondary} >LOGO</p>
         </div>
         <div className="Menu width-200 flex justify-around mt-2 mb-2">
           <div>
             <Button
               label="About"
               className="p-button-raised p-button-primary p-button-text"
+              style={JSON.parse(localStorage.getItem('settheme'))?isAccent:isNotAccent}
             />
           </div>
         </div>
@@ -65,7 +78,7 @@ const Settings = () => {
         <div className="Main ">
           <div className="flex m-auto mt-4 justify-around width-600">
             <div>
-              <p className="text-4" style={{ color: Primarycolor[0] }}>
+              <p className="text-4"  style={{ color: Primarycolor[0] }}>
                 The.
               </p>
             </div>
@@ -109,13 +122,16 @@ const Settings = () => {
               icon="pi pi-arrow-right"
               className="p-button-lg p-button-square p-button-info p-button-text"
               aria-label="setColor"
+              style={JSON.parse(localStorage.getItem('settheme'))?isAccent:isNotAccent}
               onClick={
                 ()=>{
                   if (Primarycolor[0].length!==0 && Secondarycolor[0].length!==0 && Accentcolor[0].length!==0)
                   {
-                  document.body.style.backgroundColor=Primarycolor[0];
-                  document.getElementById('secondary').color=Secondarycolor[0];
-
+                  localStorage.setItem('primary',JSON.stringify(Primarycolor[0]));
+                  localStorage.setItem('secondary',JSON.stringify(Secondarycolor[0]));
+                  localStorage.setItem('accent',JSON.stringify(Accentcolor[0]));
+                  const themeset=true;
+                  localStorage.setItem('settheme',JSON.stringify(themeset))
                 }
                   else 
                   alert("Choose the color");

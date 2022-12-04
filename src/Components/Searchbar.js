@@ -14,9 +14,6 @@ const SearchBar = () => {
           <i className="pi pi-search" />
           <InputText
             value={val[0]}
-            // onFocus={
-            //   ()=>{document.}
-            // }
             onChange={(e) => {
               setValue(e.target.value);
               document.querySelector(".cityList").style.display = "block";
@@ -25,7 +22,7 @@ const SearchBar = () => {
           />
         </span>
       </div>
-      <div className="cityList border mt-3 width-400 m-auto hidden">
+      <div className="cityList border width-400 m-auto hidden" style={{color:'#282120'}}>
         {
         mockData
           .filter((data) => {
@@ -38,7 +35,7 @@ const SearchBar = () => {
             <div className="items">
               <Link to="/weather" id="link">
                 <Button
-                  className=" btn p-button-raised p-button-primary p-button-text"
+                  className=" btn p-button-raised p-button-primary p-button-text "
                   onClick={() => {setValue(data.id)}}
                 >
                   <li className="list m-0" id="cityName">
