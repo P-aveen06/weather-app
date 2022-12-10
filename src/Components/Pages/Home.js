@@ -1,11 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
 // import Button from "./Button";
 import Typewriter from "typewriter-effect";
-import Searchbarimg from "../Assets/search.png";
-import Logo from "../Assets/logo.svg";
-import SearchBar from "./Searchbar";
-import CardEffect from "./CardEffect";
+import Searchbarimg from "../../Assets/search.png";
+import SearchBar from "../Searchbar";
+import CardEffect from "../Shared/CardEffect";
+import Header from "../Shared/Header";
 const Home = () => {
   const isSecondary = {
     color: JSON.parse(localStorage.getItem("secondary")),
@@ -23,39 +22,7 @@ const Home = () => {
   };
   return (
     <div className="Home">
-      <div className="Header flex justify-between">
-        <div>
-          <img src={Logo} alt="logo" width={300} height={100} />
-        </div>
-        <div className=" width-400 flex justify-around">
-          <div
-            className="box-1 m-auto"
-            style={
-              JSON.parse(localStorage.getItem("settheme"))
-                ? isAccent
-                : isNotAccent
-            }
-          >
-            <div className="bt btn-nav">
-              <span>ABOUT</span>
-            </div>
-          </div>
-          <Link to="/settings" className="mt-2">
-            <div
-              className="box-1 m-auto"
-              style={
-                JSON.parse(localStorage.getItem("settheme"))
-                  ? isAccent
-                  : isNotAccent
-              }
-            >
-              <div className="bt btn-nav">
-                <span>SETTINGS</span>
-              </div>
-            </div>
-          </Link>
-        </div>
-      </div>
+      <Header isAccent={isAccent} isNotAccent={isNotAccent} about={true} settings={true}/>
       <div className="main mt-4">
         <div className="text-3" 
         style={
@@ -63,7 +30,6 @@ const Home = () => {
                 ? isSecondary
                 : isNotSecondary
             }
-        // style={{color:"#f4b805"}}
             >
           <Typewriter
             onInit={(typewriter) => {

@@ -10,7 +10,7 @@ export const Provider = (props) => {
   return (
     <Context.Provider
       value={{
-        val: [value, setValue],
+        city: [value, setValue],
         Primarycolor: [Primarycolor, setPrimaryColor],
         Secondarycolor: [Secondarycolor, setSecondaryColor],
         Accentcolor: [Accentcolor, setAccentColor],

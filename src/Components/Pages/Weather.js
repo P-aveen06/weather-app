@@ -1,12 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
-import Logo from "../Assets/logo.svg";
-import { Button } from "primereact/button";
-import { Card } from "primereact/card";
-import { Context } from "../Context";
-import mockData from "../Assets/data.json";
+import React, { useContext, useState } from "react";
+import { Context } from "../../Context";
+import mockData from "../../Assets/data.json";
 import { Link } from "react-router-dom";
-import CardEffect from "./CardEffect";
-import WeatherImg from "../Assets/weather.png"
+import CardEffect from "../Shared/CardEffect";
+import WeatherImg from "../../Assets/weather.png";
+import Header from "../Shared/Header";
 const Weather = (props) => {
   const [temp, setTemp] = useState("");
   const [description, setDescription] = useState(" ");
@@ -14,8 +12,8 @@ const Weather = (props) => {
   const [cityName,setCityName]=useState("")
   const [visibility,setVisibility] = useState("");
   const [time,setTime] = useState("");
-  const { val } = useContext(Context);
-  const [value, setValue] = val;
+  const { city } = useContext(Context);
+  const [value, setValue] = city;
   try {
     const city = mockData[value];
     const url =
@@ -52,23 +50,7 @@ const Weather = (props) => {
 
   return (
     <div>
-      <div className="Header flex justify-between">
-        <div>
-          <img src={Logo} alt="logo" width={300} height={100} />
-        </div>
-        <div className=" width-400 flex justify-around">
-          <div className="box-1 m-auto">
-            <div className="bt btn-nav">
-              <span>ABOUT</span>
-            </div>
-          </div>
-          <div className="box-1 m-auto">
-            <div className="bt btn-nav">
-              <span>SETTINGS</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Header about={true} settings={true}/>
       <div className="flex mt-4">
         <div>
         <CardEffect title={temp+"°C, "+cityName}
