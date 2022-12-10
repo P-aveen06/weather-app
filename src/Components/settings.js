@@ -3,21 +3,22 @@ import { Dropdown } from "primereact/dropdown";
 import { Button } from "primereact/button";
 import { Context } from "../Context";
 import { Link } from "react-router-dom";
+import Logo from "../Assets/logo.svg";
 const Settings = () => {
-  const isSecondary={
-    color:JSON.parse(localStorage.getItem('secondary'))
-  }
-  const isNotSecondary={
-    color:"white"
-  }
-  const isAccent={
-    backgroundColor:JSON.parse(localStorage.getItem('accent')),
-    color:'black'
-  }
-  const isNotAccent={
-    backgroundColor:'none',
-    color:'black'
-  }
+  // const isSecondary={
+  //   color:JSON.parse(localStorage.getItem('secondary'))
+  // }
+  // const isNotSecondary={
+  //   color:"white"
+  // }
+  // const isAccent={
+  //   backgroundColor:JSON.parse(localStorage.getItem('accent')),
+  //   color:'black'
+  // }
+  // const isNotAccent={
+  //   backgroundColor:'none',
+  //   color:'black'
+  // }
   const { Primarycolor,Secondarycolor,Accentcolor } = useContext(Context);
   const [PrimarycolorValue, setPrimarycolorValue] = Primarycolor;
   const [SecondarycolorValue, setSecondarycolorValue] = Secondarycolor;
@@ -33,8 +34,27 @@ const Settings = () => {
     { name: "pink-700", value: "#a5326b" },
     { name: "pink-800", value: "#822854" },
     { name: "pink-900", value: "#5e1d3d" },
+    { name: "indigo-50", value: "#f7f7fe" },
+    { name: "indigo-100", value: "#dadafc" },
+    { name: "indigo-200", value: "#bcbdf9" },
+    { name: "indigo-300", value: "#9ea0f6" },
+    { name: "indigo-400", value: "#8183f4" },
+    { name: "indigo-500", value: "#6366f1" },
+    { name: "indigo-600", value: "#5457cd" },
+    { name: "indigo-700", value: "#4547a9" },
+    { name: "indigo-800", value: "#363885" }
   ];
   const Secondarycolors = [
+    { name: "pink-50", value: "#fef6fa" },
+    { name: "pink-100", value: "#fad3e7" },
+    { name: "pink-200", value: "#f7b0d3" },
+    { name: "pink-300", value: "#f38ec0" },
+    { name: "pink-400", value: "#f06bac" },
+    { name: "pink-500", value: "#ec4899" },
+    { name: "pink-600", value: "#c93d82" },
+    { name: "pink-700", value: "#a5326b" },
+    { name: "pink-800", value: "#822854" },
+    { name: "pink-900", value: "#5e1d3d" },
     { name: "indigo-50", value: "#f7f7fe" },
     { name: "indigo-100", value: "#dadafc" },
     { name: "indigo-200", value: "#bcbdf9" },
@@ -47,6 +67,16 @@ const Settings = () => {
     { name: "indigo-900", value: "#282960" },
   ];
   const Accentcolors = [
+    { name: "indigo-50", value: "#f7f7fe" },
+    { name: "indigo-100", value: "#dadafc" },
+    { name: "indigo-200", value: "#bcbdf9" },
+    { name: "indigo-300", value: "#9ea0f6" },
+    { name: "indigo-400", value: "#8183f4" },
+    { name: "indigo-500", value: "#6366f1" },
+    { name: "indigo-600", value: "#5457cd" },
+    { name: "indigo-700", value: "#4547a9" },
+    { name: "indigo-800", value: "#363885" },
+    { name: "indigo-900", value: "#282960" },
     { name: "teal-50", value: "#ffffff" },
     { name: "teal-100", value: "#c7eeea" },
     { name: "teal-200", value: "#9ae0d9" },
@@ -62,15 +92,13 @@ const Settings = () => {
     <div className="Settings">
       <div className="Header flex justify-between">
         <div>
-          <p className="text-2" style={JSON.parse(localStorage.getItem('settheme'))?isSecondary:isNotSecondary} >LOGO</p>
+          <img src={Logo} alt="logo" width={300} height={100} />
         </div>
-        <div className="Menu width-200 flex justify-around mt-2 mb-2">
-          <div>
-            <Button
-              label="About"
-              className="p-button-raised p-button-primary p-button-text"
-              style={JSON.parse(localStorage.getItem('settheme'))?isAccent:isNotAccent}
-            />
+        <div className=" width-400 flex justify-around">
+          <div className="box-1 m-auto">
+            <div className="bt btn-nav">
+              <span>ABOUT</span>
+            </div>
           </div>
         </div>
       </div>
@@ -78,17 +106,17 @@ const Settings = () => {
         <div className="Main ">
           <div className="flex m-auto mt-4 justify-around width-600">
             <div>
-              <p className="text-4"  style={{ color: Primarycolor[0] }}>
+              <p className="sample text-4"  style={{ color: Primarycolor[0] }}>
                 The.
               </p>
             </div>
             <div>
-              <p className="text-4" style={{ color: Secondarycolor[0] }}>
+              <p className="sample text-4" style={{ color: Secondarycolor[0] }}>
                 Cloud.
               </p>
             </div>
             <div>
-              <p className="text-4 underline" style={{ color: Accentcolor[0] }}>
+              <p className=" sample text-4 underline" style={{ color: Accentcolor[0] }}>
                 Company
               </p>
             </div>
@@ -121,8 +149,8 @@ const Settings = () => {
               <Button
               icon="pi pi-arrow-right"
               className="p-button-lg p-button-square p-button-info p-button-text"
-              aria-label="setColor"
-              style={JSON.parse(localStorage.getItem('settheme'))?isAccent:isNotAccent}
+              // style={JSON.parse(localStorage.getItem('settheme'))?isAccent:isNotAccent}
+              style={{backgroundColor:"#f4b805",color:"black"}}
               onClick={
                 ()=>{
                   if (Primarycolor[0].length!==0 && Secondarycolor[0].length!==0 && Accentcolor[0].length!==0)
