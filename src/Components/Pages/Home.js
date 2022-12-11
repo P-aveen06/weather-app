@@ -10,7 +10,7 @@ const Home = () => {
     color: JSON.parse(localStorage.getItem("secondary")),
   };
   const isNotSecondary = {
-    color: "#f4b805"
+    color: "#f4b805",
   };
   const isAccent = {
     backgroundColor: JSON.parse(localStorage.getItem("accent")),
@@ -22,15 +22,21 @@ const Home = () => {
   };
   return (
     <div className="Home">
-      <Header isAccent={isAccent} isNotAccent={isNotAccent} about={true} settings={true}/>
+      <Header
+        isAccent={isAccent}
+        isNotAccent={isNotAccent}
+        about={true}
+        settings={true}
+      />
       <div className="main mt-4">
-        <div className="text-3" 
-        style={
-              JSON.parse(localStorage.getItem("settheme"))
-                ? isSecondary
-                : isNotSecondary
-            }
-            >
+        <div
+          className="text-3"
+          style={
+            JSON.parse(localStorage.getItem("settheme"))
+              ? isSecondary
+              : isNotSecondary
+          }
+        >
           <Typewriter
             onInit={(typewriter) => {
               typewriter
@@ -46,6 +52,8 @@ const Home = () => {
         </div>
         <div className="flex justify-around">
           <CardEffect
+          isSecondary={isSecondary}
+          isNotSecondary={isNotSecondary}
             content={
               "This Application will get you the weather deatils for given location.Get instant access to accurate weather data for any geo-point in the world and enjoy a rich set of capabilities:"
             }
@@ -60,7 +68,7 @@ const Home = () => {
               className="mt-3"
             />
             <div className="m-0">
-              <SearchBar />
+              <SearchBar isAccent={isAccent} isNotAccent={isNotAccent} />
             </div>
           </div>
         </div>

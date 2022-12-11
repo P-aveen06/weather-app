@@ -6,38 +6,26 @@ export default function Header(props) {
     const isNotAccent = props.isNotAccent;
     const About = (
         <div className="mt-2">
-            <div
-                className="box-1 m-auto"
-                style={
+            <Link to="/about">
+            <button class="button-52" role="button"style={
                     JSON.parse(localStorage.getItem("settheme"))
                         ? props.isAccent
                         : props.isNotAccent
-                }
-            >
-                <div className="bt btn-nav">
-                    <span>ABOUT</span>
-                </div>
-            </div></div>
+                }>About</button></Link>
+            </div>
     )
     const notAbout=(
         <div></div>
     )
     const Settings=(
         <div className="mt-2">
-            <Link to="/settings" className="mt-2">
-                    <div
-                        className="box-1 m-auto"
-                        style={
-                            JSON.parse(localStorage.getItem("settheme"))
-                                ? isAccent
-                                : isNotAccent
-                        }
-                    >
-                        <div className="bt btn-nav">
-                            <span>SETTINGS</span>
-                        </div>
-                    </div>
-                </Link>
+         <Link to='/settings'>   
+        <button class="button-52" role="button"
+        style={
+                JSON.parse(localStorage.getItem("settheme"))
+                    ? props.isAccent
+                    : props.isNotAccent
+            }>Settings</button></Link>
         </div>
     )
     const notSettings=(

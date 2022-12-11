@@ -5,21 +5,21 @@ import { Context } from "../../Context";
 import { Link } from "react-router-dom";
 import Header from "../Shared/Header";
 const Settings = () => {
-  // const isSecondary={
-  //   color:JSON.parse(localStorage.getItem('secondary'))
-  // }
-  // const isNotSecondary={
-  //   color:"white"
-  // }
-  // const isAccent={
-  //   backgroundColor:JSON.parse(localStorage.getItem('accent')),
-  //   color:'black'
-  // }
-  // const isNotAccent={
-  //   backgroundColor:'none',
-  //   color:'black'
-  // }
-  const { Primarycolor,Secondarycolor,Accentcolor } = useContext(Context);
+  const isSecondary = {
+    color: JSON.parse(localStorage.getItem("secondary")),
+  };
+  const isNotSecondary = {
+    color: "white",
+  };
+  const isAccent = {
+    backgroundColor: JSON.parse(localStorage.getItem("accent")),
+    color: "black",
+  };
+  const isNotAccent = {
+    backgroundColor: "none",
+    color: "black",
+  };
+  const { Primarycolor, Secondarycolor, Accentcolor } = useContext(Context);
   const [PrimarycolorValue, setPrimarycolorValue] = Primarycolor;
   const [SecondarycolorValue, setSecondarycolorValue] = Secondarycolor;
   const [AccentcolorValue, setAccentcolorValue] = Accentcolor;
@@ -43,7 +43,7 @@ const Settings = () => {
     { name: "indigo-600", value: "#5457cd" },
     { name: "indigo-700", value: "#4547a9" },
     { name: "indigo-800", value: "#363885" },
-    { name: "teal-50",  value: "#ffffff" },
+    { name: "teal-50", value: "#ffffff" },
     { name: "teal-100", value: "#c7eeea" },
     { name: "teal-200", value: "#9ae0d9" },
     { name: "teal-300", value: "#6dd3c8" },
@@ -52,16 +52,23 @@ const Settings = () => {
     { name: "teal-600", value: "#119c8d" },
     { name: "teal-700", value: "#0e8174" },
     { name: "teal-800", value: "#0b655b" },
-    { name: "teal-900", value: "#084a42" }
+    { name: "teal-900", value: "#084a42" },
   ];
   return (
     <div className="Settings">
-      <Header settings={false} about={true}/>
+      <Header settings={false} about={true} isAccent={isAccent} isNotAccent={isNotAccent}/>
       <div className="flex justify-evenly">
         <div className="Main ">
-          <div className="flex m-auto mt-4 justify-around width-600">
+          <div
+            className="flex m-auto mt-4 justify-around width-600"
+            style={
+              JSON.parse(localStorage.getItem("settheme"))
+              ? isSecondary
+              : isNotSecondary
+            }
+          >
             <div>
-              <p className="sample text-4"  style={{ color: Primarycolor[0] }}>
+              <p className="sample text-4" style={{ color: Primarycolor[0] }}>
                 The.
               </p>
             </div>
@@ -71,7 +78,10 @@ const Settings = () => {
               </p>
             </div>
             <div>
-              <p className=" sample text-4 underline" style={{ color: Accentcolor[0] }}>
+              <p
+                className=" sample text-4 underline"
+                style={{ color: Accentcolor[0] }}
+              >
                 Company
               </p>
             </div>
@@ -103,27 +113,34 @@ const Settings = () => {
             />
           </div>
           <div className="mt-3">
-            <Link to='/'>
+            <Link to="/">
               <Button
-              icon="pi pi-arrow-right"
-              className="p-button-lg p-button-square p-button-info p-button-text"
-              // style={JSON.parse(localStorage.getItem('settheme'))?isAccent:isNotAccent}
-              style={{backgroundColor:"#f4b805",color:"black"}}
-              onClick={
-                ()=>{
-                  if (Primarycolor[0].length!==0 && Secondarycolor[0].length!==0 && Accentcolor[0].length!==0)
-                  {
-                  localStorage.setItem('primary',JSON.stringify(Primarycolor[0]));
-                  localStorage.setItem('secondary',JSON.stringify(Secondarycolor[0]));
-                  localStorage.setItem('accent',JSON.stringify(Accentcolor[0]));
-                  const themeset=true;
-                  localStorage.setItem('settheme',JSON.stringify(themeset))
-                }
-                  else 
-                  alert("Choose the color");
-                }
-              }
-            />
+                icon="pi pi-arrow-right"
+                className="p-button-lg p-button-square p-button-info p-button-text"
+                style={JSON.parse(localStorage.getItem('settheme'))?isAccent:isNotAccent}
+                onClick={() => {
+                  if (
+                    Primarycolor[0].length !== 0 &&
+                    Secondarycolor[0].length !== 0 &&
+                    Accentcolor[0].length !== 0
+                  ) {
+                    localStorage.setItem(
+                      "primary",
+                      JSON.stringify(Primarycolor[0])
+                    );
+                    localStorage.setItem(
+                      "secondary",
+                      JSON.stringify(Secondarycolor[0])
+                    );
+                    localStorage.setItem(
+                      "accent",
+                      JSON.stringify(Accentcolor[0])
+                    );
+                    const themeset = true;
+                    localStorage.setItem("settheme", JSON.stringify(themeset));
+                  } else alert("Choose the color");
+                }}
+              />
             </Link>
           </div>
         </div>
