@@ -21,13 +21,13 @@ const Home = () => {
     color: "black",
   };
   return (
-    <div className="Home">
-      <Header
+    <div className="Home m-auto">
+      {/* <Header
         isAccent={isAccent}
         isNotAccent={isNotAccent}
         about={true}
         settings={true}
-      />
+      /> */}
       <div className="main mt-4">
         <div
           className="text-3"
@@ -68,11 +68,14 @@ const Home = () => {
               className="mt-3"
             />
             <div className="m-0">
-              <SearchBar isAccent={isAccent} isNotAccent={isNotAccent} />
+              <SearchBar isAccent={isAccent} isNotAccent={isNotAccent} isSecondary={isNotSecondary} />
             </div>
           </div>
         </div>
       </div>
+      <div>
+      
+    </div>
     </div>
   );
 };

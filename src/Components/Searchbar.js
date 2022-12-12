@@ -7,7 +7,7 @@ const SearchBar = (props) => {
   const { city } = useContext(Context);
   const [value, setValue] = city;
   const [options, setOptions] = useState([]);
-
+ 
   useEffect(() => {
     const options = mockData.map((item) => ({
       label: item.name,
@@ -30,6 +30,7 @@ const SearchBar = (props) => {
           value={value}
           editable
           onChange={handleSearchChange}
+          style={JSON.parse(localStorage.getItem('settheme')) ? props.isSecondary : props.isNotSecondary}
         />
       </div>
       <div className="mt-1">

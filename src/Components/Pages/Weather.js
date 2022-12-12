@@ -15,24 +15,23 @@ const Weather = (props) => {
   const isAccent = {
     backgroundColor: JSON.parse(localStorage.getItem("accent")),
     color: "black",
-    after: JSON.parse(localStorage.getItem("accent")),
   };
   const isNotAccent = {
     backgroundColor: "none",
     color: "black",
   };
-  const [temp, setTemp] = useState("");
-  const [description, setDescription] = useState(" ");
-  const [humidity, setHumidity] = useState(" ");
-  const [cityName, setCityName] = useState("");
+  const [temp, setTemp] = useState("Degree");
+  const [description, setDescription] = useState("Description");
+  const [humidity, setHumidity] = useState("Range");
+  const [cityName, setCityName] = useState("city");
   const [visibility, setVisibility] = useState("");
-  const [time, setTime] = useState("");
+  // const [time, setTime] = useState("Time");
   const { city } = useContext(Context);
-  const [value, setValue] = city;
+  const [value] = city;
   try {
     const city = mockData[value];
     const url =
-      "http://api.weatherstack.com/current?access_key=1c93cccd601fb09566234fbfa85dae91&query=" +
+      "http://api.weatherstack.com/current?access_key=06154531d86df308b2515d3827b6d16d&query=" +
       city.lat +
       "," +
       city.lon;
@@ -44,7 +43,7 @@ const Weather = (props) => {
         setCityName(data.location.name);
         setHumidity(data.current.humidity);
         setVisibility(data.current.visibility);
-        setTime(data.current.observation_time);
+        // setTime(data.current.observation_time);
       });
   } catch (err) {
     return (
@@ -59,8 +58,8 @@ const Weather = (props) => {
           <Link to="/">
           <div className="mt-1"><button class="button-52" role="button"style={
                     JSON.parse(localStorage.getItem("settheme"))
-                        ? props.isAccent
-                        : props.isNotAccent
+                        ? isAccent
+                        : isNotAccent
                 }>Back Home</button></div>
           </Link>
         </div>
@@ -70,27 +69,24 @@ const Weather = (props) => {
 
   return (
     <div>
-      <Header about={true} settings={true} isAccent={isAccent} isNotAccent={isNotAccent}
-      />
+      {/* <Header about={true} settings={true} isAccent={isAccent} isNotAccent={isNotAccent} */}
+      {/* /> */}
       <div className="flex mt-4">
         <div>
-          <CardEffect
-            title={temp + "°C, " + cityName}
-            content={
-              ".... " +
-              description +
-              " .... with the Humidity range - [" +
-              humidity +
-              "] %" +
-              " and the visbility level [" +
-              visibility +
-              "].Lastly Updated on (" +
-              time +
-              ")"
-            }
-            isSecondary={isSecondary}
-            isNotSecondary={isNotSecondary}
-          />
+        <div className="card">
+        <div className="mt-2">
+          <div className="mt-3">
+            <i
+              className="pi pi-cloud mt-2"
+              style={{ fontSize: "3rem", color: "#f4b805" }}
+            ></i>
+            <p className="text-3 mt-1 mb-1">{temp} °C, {cityName}</p>
+            <div><p className="text-2 mb-1">{description} </p></div>
+            <div className="flex justify-around "><p className="text-1">Humidity: {humidity}%</p>
+            <p className="text-1">visibility Range: {visibility}</p></div>
+          </div>
+        </div>
+      </div>
         </div>
         <div>
           <img src={WeatherImg} alt="Loading ..." className="img " />

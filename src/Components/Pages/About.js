@@ -1,6 +1,6 @@
 import React from "react";
-import CardEffect from "./CardEffect";
-import Header from "./Header";
+import CardEffect from "../Shared/CardEffect";
+import Header from "../Shared/Header";
 import { Link } from "react-router-dom";
 const About = (props) => {
   const isSecondary = {
@@ -19,12 +19,6 @@ const About = (props) => {
   };
   return (
     <div className="m-auto">
-      <Header
-        isAccent={isAccent}
-        isNotAccent={isNotAccent}
-        about={false}
-        settings={true}
-      />
       <div className="m-auto">
         <div><CardEffect
           title={"About Us"}

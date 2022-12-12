@@ -54,17 +54,39 @@ const Settings = () => {
     { name: "teal-800", value: "#0b655b" },
     { name: "teal-900", value: "#084a42" },
   ];
+  function setColors(){
+    if (
+      Primarycolor[0].length !== 0 &&
+      Secondarycolor[0].length !== 0 &&
+      Accentcolor[0].length !== 0
+    ) {
+      localStorage.setItem(
+        "primary",
+        JSON.stringify(Primarycolor[0])
+      );
+      localStorage.setItem(
+        "secondary",
+        JSON.stringify(Secondarycolor[0])
+      );
+      localStorage.setItem(
+        "accent",
+        JSON.stringify(Accentcolor[0])
+      );
+      const themeset = true;
+      localStorage.setItem("settheme", JSON.stringify(themeset));
+    } else alert("Choose the color");
+  }
   return (
     <div className="Settings">
-      <Header settings={false} about={true} isAccent={isAccent} isNotAccent={isNotAccent}/>
+      {/* <Header settings={false} about={true} isAccent={isAccent} isNotAccent={isNotAccent} /> */}
       <div className="flex justify-evenly">
         <div className="Main ">
           <div
             className="flex m-auto mt-4 justify-around width-600"
             style={
               JSON.parse(localStorage.getItem("settheme"))
-              ? isSecondary
-              : isNotSecondary
+                ? isSecondary
+                : isNotSecondary
             }
           >
             <div>
@@ -112,33 +134,15 @@ const Settings = () => {
               placeholder="Accent Color"
             />
           </div>
+          <div className="mt-3"><a href="https://www.primefaces.org/primereact/colors/" alt="https://www.primefaces.org/primereact/colors/" target="_blank">Refer Colors Here</a></div>
           <div className="mt-3">
             <Link to="/">
               <Button
                 icon="pi pi-arrow-right"
                 className="p-button-lg p-button-square p-button-info p-button-text"
-                style={JSON.parse(localStorage.getItem('settheme'))?isAccent:isNotAccent}
+                style={JSON.parse(localStorage.getItem('settheme')) ? isAccent : isNotAccent}
                 onClick={() => {
-                  if (
-                    Primarycolor[0].length !== 0 &&
-                    Secondarycolor[0].length !== 0 &&
-                    Accentcolor[0].length !== 0
-                  ) {
-                    localStorage.setItem(
-                      "primary",
-                      JSON.stringify(Primarycolor[0])
-                    );
-                    localStorage.setItem(
-                      "secondary",
-                      JSON.stringify(Secondarycolor[0])
-                    );
-                    localStorage.setItem(
-                      "accent",
-                      JSON.stringify(Accentcolor[0])
-                    );
-                    const themeset = true;
-                    localStorage.setItem("settheme", JSON.stringify(themeset));
-                  } else alert("Choose the color");
+                  setColors()
                 }}
               />
             </Link>
