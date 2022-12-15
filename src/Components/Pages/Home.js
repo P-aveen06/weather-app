@@ -1,40 +1,19 @@
 import React from "react";
-// import Button from "./Button";
 import Typewriter from "typewriter-effect";
 import Searchbarimg from "../../Assets/search.png";
 import SearchBar from "../Searchbar";
 import CardEffect from "../Shared/CardEffect";
-import Header from "../Shared/Header";
-const Home = () => {
-  const isSecondary = {
-    color: JSON.parse(localStorage.getItem("secondary")),
-  };
-  const isNotSecondary = {
-    color: "#f4b805",
-  };
-  const isAccent = {
-    backgroundColor: JSON.parse(localStorage.getItem("accent")),
-    color: "black",
-  };
-  const isNotAccent = {
-    backgroundColor: "none",
-    color: "black",
-  };
+import { Link } from "react-router-dom";
+const Home = (props) => {
   return (
     <div className="Home m-auto">
-      {/* <Header
-        isAccent={isAccent}
-        isNotAccent={isNotAccent}
-        about={true}
-        settings={true}
-      /> */}
       <div className="main mt-4">
         <div
           className="text-3"
           style={
             JSON.parse(localStorage.getItem("settheme"))
-              ? isSecondary
-              : isNotSecondary
+              ? props.isSecondary
+              : null
           }
         >
           <Typewriter
@@ -52,8 +31,8 @@ const Home = () => {
         </div>
         <div className="flex justify-around">
           <CardEffect
-          isSecondary={isSecondary}
-          isNotSecondary={isNotSecondary}
+            isSecondary={props.isSecondary}
+            isNotSecondary={props.isNotSecondary}
             content={
               "This Application will get you the weather deatils for given location.Get instant access to accurate weather data for any geo-point in the world and enjoy a rich set of capabilities:"
             }
@@ -68,14 +47,29 @@ const Home = () => {
               className="mt-3"
             />
             <div className="m-0">
-              <SearchBar isAccent={isAccent} isNotAccent={isNotAccent} isSecondary={isNotSecondary} />
+              <SearchBar
+                isAccent={props.isAccent}
+                isSecondary={props.isSecondary}
+              />
+            </div>
+            <div className="mt-1">
+              <Link to="/weather">
+                <button
+                  class="button-52"
+                  role="button"
+                  style={
+                    JSON.parse(localStorage.getItem("settheme"))
+                      ? props.isAccent
+                      : null
+                  }
+                >
+                  Get
+                </button>
+              </Link>
             </div>
           </div>
         </div>
       </div>
-      <div>
-      
-    </div>
     </div>
   );
 };

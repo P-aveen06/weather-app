@@ -33,21 +33,7 @@ const SearchBar = (props) => {
           style={JSON.parse(localStorage.getItem('settheme')) ? props.isSecondary : props.isNotSecondary}
         />
       </div>
-      <div className="mt-1">
-        <Link to="/weather">
-          <button
-            class="button-52"
-            role="button"
-            style={
-              JSON.parse(localStorage.getItem("settheme"))
-                ? props.isAccent
-                : props.isNotAccent
-            }
-          >
-            Get
-          </button>
-        </Link>
-      </div>
+      
     </div>
   );
 };

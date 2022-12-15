@@ -3,22 +3,7 @@ import { Dropdown } from "primereact/dropdown";
 import { Button } from "primereact/button";
 import { Context } from "../../Context";
 import { Link } from "react-router-dom";
-import Header from "../Shared/Header";
-const Settings = () => {
-  const isSecondary = {
-    color: JSON.parse(localStorage.getItem("secondary")),
-  };
-  const isNotSecondary = {
-    color: "white",
-  };
-  const isAccent = {
-    backgroundColor: JSON.parse(localStorage.getItem("accent")),
-    color: "black",
-  };
-  const isNotAccent = {
-    backgroundColor: "none",
-    color: "black",
-  };
+const Settings = (props) => {
   const { Primarycolor, Secondarycolor, Accentcolor } = useContext(Context);
   const [PrimarycolorValue, setPrimarycolorValue] = Primarycolor;
   const [SecondarycolorValue, setSecondarycolorValue] = Secondarycolor;
@@ -54,39 +39,27 @@ const Settings = () => {
     { name: "teal-800", value: "#0b655b" },
     { name: "teal-900", value: "#084a42" },
   ];
-  function setColors(){
+  function setColors() {
     if (
       Primarycolor[0].length !== 0 &&
       Secondarycolor[0].length !== 0 &&
       Accentcolor[0].length !== 0
     ) {
-      localStorage.setItem(
-        "primary",
-        JSON.stringify(Primarycolor[0])
-      );
-      localStorage.setItem(
-        "secondary",
-        JSON.stringify(Secondarycolor[0])
-      );
-      localStorage.setItem(
-        "accent",
-        JSON.stringify(Accentcolor[0])
-      );
+      localStorage.setItem("primary", JSON.stringify(Primarycolor[0]));
+      localStorage.setItem("secondary", JSON.stringify(Secondarycolor[0]));
+      localStorage.setItem("accent", JSON.stringify(Accentcolor[0]));
       const themeset = true;
       localStorage.setItem("settheme", JSON.stringify(themeset));
     } else alert("Choose the color");
   }
   return (
-    <div className="Settings">
-      {/* <Header settings={false} about={true} isAccent={isAccent} isNotAccent={isNotAccent} /> */}
-      <div className="flex justify-evenly">
+    <div className="Settings m-auto">
+      <div >
         <div className="Main ">
           <div
             className="flex m-auto mt-4 justify-around width-600"
             style={
-              JSON.parse(localStorage.getItem("settheme"))
-                ? isSecondary
-                : isNotSecondary
+              JSON.parse(localStorage.getItem("settheme")) ? props.isSecondary : null
             }
           >
             <div>
@@ -108,7 +81,7 @@ const Settings = () => {
               </p>
             </div>
           </div>
-          <div className="flex justify-around width-800">
+          <div className="flex justify-around width-800 m-auto">
             <Dropdown
               value={PrimarycolorValue}
               options={Colors}
@@ -134,15 +107,26 @@ const Settings = () => {
               placeholder="Accent Color"
             />
           </div>
-          <div className="mt-3"><a href="https://www.primefaces.org/primereact/colors/" alt="https://www.primefaces.org/primereact/colors/" target="_blank">Refer Colors Here</a></div>
+          <div className="mt-3">
+            <a
+              href="https://www.primefaces.org/primereact/colors/"
+              alt="https://www.primefaces.org/primereact/colors/"
+              target="_blank"
+              style={{ color: "#f4b805" }}
+            >
+              Refer Colors Here
+            </a>
+          </div>
           <div className="mt-3">
             <Link to="/">
               <Button
                 icon="pi pi-arrow-right"
                 className="p-button-lg p-button-square p-button-info p-button-text"
-                style={JSON.parse(localStorage.getItem('settheme')) ? isAccent : isNotAccent}
+                style={
+                  JSON.parse(localStorage.getItem("settheme")) ? props.isAccent : null
+                }
                 onClick={() => {
-                  setColors()
+                  setColors();
                 }}
               />
             </Link>
