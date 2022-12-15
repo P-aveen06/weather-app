@@ -9,10 +9,12 @@ import About from "./Components/Pages/About";
 import { Provider } from "./Context";
 import Home from "./Components/Pages/Home";
 import Header from "./Components/Shared/Header";
+import Error from "./Components/Pages/Errors";
 function App() {
   const isAccent = {
-   color: JSON.parse(localStorage.getItem("accent"))
-  };
+    color: JSON.parse(localStorage.getItem("accent")),
+    border: `2px solid ${JSON.parse(localStorage.getItem("accent"))}`
+  }
   const isSecondary = {
     color: JSON.parse(localStorage.getItem("secondary")),
   };
@@ -23,47 +25,15 @@ function App() {
     <BrowserRouter>
       <Provider>
         <div className="App">
-          <navbar>
-            <Header isAccent={isAccent} />
-          </navbar>
           <Routes>
-            <Route path="/" element={<Navigate to="/home" />}></Route>
-            <Route
-              path="/home"
-              element={
-                <Home
-                  isAccent={isAccent}
-                  isSecondary={isSecondary}
-                />
-              }
-            ></Route>
-            <Route
-              path="/weather"
-              element={
-                <Weather
-                  isAccent={isAccent}
-                  isSecondary={isSecondary}
-                />
-              }
-            ></Route>
-            <Route
-              path="/settings"
-              element={
-                <Settings
-                  isAccent={isAccent}
-                  isSecondary={isSecondary}
-                />
-              }
-            ></Route>
-            <Route
-              path="/about"
-              element={
-                <About
-                  isAccent={isAccent}
-                  isSecondary={isSecondary}
-                />
-              }
-            ></Route>
+            <Route path="/" element={<Header/>}>
+              <Route path="/app/home" element={<Home/>}/>
+              <Route path="/app/settings" element={<Settings/>}/>
+              <Route path="/app/about" element={<About/>}/>
+              <Route path="/app/weather" element={<Weather/>}/>
+            </Route>
+            <Route path="/app/home" element={<Home/>}/>
+            <Route path="*" element={<Error/>}/>
           </Routes>
         </div>
       </Provider>

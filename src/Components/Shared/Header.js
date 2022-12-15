@@ -3,8 +3,9 @@ import Logo from "../../Assets/logo.svg";
 import { NavLink } from "react-router-dom";
 export default function Header(props) {
     const link={
-        color:"grey",
-        fontSize:"2rem"
+        color:"black",
+        // fontSize:"1rem",
+        border: "2px solid black"
     }
   return (
     <div className="Header flex justify-between">
@@ -13,36 +14,34 @@ export default function Header(props) {
       </div>
       <div className="flex width-400 justify-around " style={{alignItems:"center"}}>
         <div>
-          <NavLink
-            to="/home"
-            className="link text-2"
+        <NavLink
+            to="/app/home"
+            className="link button_slide slide_left"
             style={({ isActive }) =>
               isActive ? link : props.isAccent
             }
-          >
-            Home
+          >Home
           </NavLink>
         </div>
         <div>
           <NavLink
-            to="/settings"
-            className="link text-2"
+            to="/app/settings"
+            className="link button_slide slide_left "
             style={({ isActive }) =>
               isActive ? link : props.isAccent
             }
-          >
-            Settings
+          > Settings
           </NavLink>
         </div>
         <div>
           <NavLink
-            to="/about"
-            className="link text-2"
+            to="/app/about"
+            className="link button_slide slide_left"
             style={({ isActive }) =>
               isActive ? link : props.isAccent
             }
           >
-            About
+           About
           </NavLink>
         </div>
       </div>

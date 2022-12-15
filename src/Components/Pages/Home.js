@@ -19,9 +19,7 @@ const Home = (props) => {
           <Typewriter
             onInit={(typewriter) => {
               typewriter
-
                 .typeString("Weather Application")
-
                 .pauseFor(1000)
                 .deleteAll()
                 .typeString("Get Your weather details")
@@ -55,7 +53,7 @@ const Home = (props) => {
             <div className="mt-1">
               <Link to="/weather">
                 <button
-                  class="button-52"
+                  className="button_slide slide_left"
                   role="button"
                   style={
                     JSON.parse(localStorage.getItem("settheme"))

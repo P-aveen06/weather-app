@@ -3,9 +3,8 @@ import React from "react";
 const CardEffect = (props) => {
   return (
     <div>
-      <div className="card">
-        <div className="mt-2">
-          <div className="mt-3">
+      <div className="card mt-0">
+          <div>
             <i
               className="pi pi-cloud mt-2"
               style={{ fontSize: "3rem", color: "#f4b805" }}
@@ -30,7 +29,6 @@ const CardEffect = (props) => {
             >
               {props.content}
             </p>
-          </div>
         </div>
       </div>
     </div>

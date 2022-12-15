@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Dropdown } from "primereact/dropdown";
 import mockData from "../Assets/data.json";
-import { Link } from "react-router-dom";
 import { Context } from "../Context";
 const SearchBar = (props) => {
   const { city } = useContext(Context);

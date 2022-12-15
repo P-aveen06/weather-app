@@ -112,13 +112,13 @@ const Settings = (props) => {
               href="https://www.primefaces.org/primereact/colors/"
               alt="https://www.primefaces.org/primereact/colors/"
               target="_blank"
-              style={{ color: "#f4b805" }}
+              style={{ color: "black" }}
             >
               Refer Colors Here
             </a>
           </div>
           <div className="mt-3">
-            <Link to="/">
+            <Link to="/" className="link">
               <Button
                 icon="pi pi-arrow-right"
                 className="p-button-lg p-button-square p-button-info p-button-text"
