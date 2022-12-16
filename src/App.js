@@ -8,13 +8,14 @@ import Settings from "./Components/Pages/settings";
 import About from "./Components/Pages/About";
 import { Provider } from "./Context";
 import Home from "./Components/Pages/Home";
-import Header from "./Components/Shared/Header";
 import Error from "./Components/Pages/Errors";
+import WeatherApp from "./WeatherApp";
+import Pages from "./Pages";
 function App() {
   const isAccent = {
     color: JSON.parse(localStorage.getItem("accent")),
-    border: `2px solid ${JSON.parse(localStorage.getItem("accent"))}`
-  }
+    border: `2px solid ${JSON.parse(localStorage.getItem("accent"))}`,
+  };
   const isSecondary = {
     color: JSON.parse(localStorage.getItem("secondary")),
   };
@@ -26,14 +27,16 @@ function App() {
       <Provider>
         <div className="App">
           <Routes>
-            <Route path="/" element={<Header/>}>
-              <Route path="/app/home" element={<Home/>}/>
-              <Route path="/app/settings" element={<Settings/>}/>
-              <Route path="/app/about" element={<About/>}/>
-              <Route path="/app/weather" element={<Weather/>}/>
+            <Route path="/app" element={<WeatherApp />}>
+              <Route path="home" element={<Home />} />
+              <Route path="settings" element={<Settings />} />
+              <Route path="about" element={<About />} />
             </Route>
-            <Route path="/app/home" element={<Home/>}/>
-            <Route path="*" element={<Error/>}/>
+            <Route path="/pages" element={<Pages />}>
+              <Route path="error" element={<Error />} />
+            </Route>
+            <Route path="*" element={<Navigate to="/pages/error" />} />
+            <Route path="/" element={<Navigate to="/app" />} />
           </Routes>
         </div>
       </Provider>

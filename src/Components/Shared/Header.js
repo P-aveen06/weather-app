@@ -2,46 +2,48 @@ import React from "react";
 import Logo from "../../Assets/logo.svg";
 import { NavLink } from "react-router-dom";
 export default function Header(props) {
-    const link={
-        color:"black",
-        // fontSize:"1rem",
-        border: "2px solid black"
-    }
+  const link = {
+    color: "black",
+    border: "2px solid black",
+  };
   return (
     <div className="Header flex justify-between">
       <div>
         <img src={Logo} alt="logo" width={300} height={100} />
       </div>
-      <div className="flex width-400 justify-around " style={{alignItems:"center"}}>
+      <div
+        className="flex width-400 justify-around "
+        style={{ alignItems: "center" }}
+      >
         <div>
-        <NavLink
+          <NavLink
+            exact
             to="/app/home"
             className="link button_slide slide_left"
-            style={({ isActive }) =>
-              isActive ? link : props.isAccent
-            }
-          >Home
+            style={({ isActive }) => (isActive ? link : props.isAccent)}
+          >
+            Home
           </NavLink>
         </div>
         <div>
           <NavLink
+            exact
             to="/app/settings"
             className="link button_slide slide_left "
-            style={({ isActive }) =>
-              isActive ? link : props.isAccent
-            }
-          > Settings
+            style={({ isActive }) => (isActive ? link : props.isAccent)}
+          >
+            {" "}
+            Settings
           </NavLink>
         </div>
         <div>
           <NavLink
+            exact
             to="/app/about"
             className="link button_slide slide_left"
-            style={({ isActive }) =>
-              isActive ? link : props.isAccent
-            }
+            style={({ isActive }) => (isActive ? link : props.isAccent)}
           >
-           About
+            About
           </NavLink>
         </div>
       </div>
