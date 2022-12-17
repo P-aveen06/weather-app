@@ -51,7 +51,7 @@ const Home = (props) => {
               />
             </div>
             <div className="mt-1">
-              <Link to="/weather">
+              <Link to="/app/weather">
                 <button
                   className="button_slide slide_left"
                   role="button"

@@ -28,9 +28,11 @@ function App() {
         <div className="App">
           <Routes>
             <Route path="/app" element={<WeatherApp />}>
-              <Route path="home" element={<Home />} />
-              <Route path="settings" element={<Settings />} />
-              <Route path="about" element={<About />} />
+              <Route index path="home" element={<Home isAccent={isAccent} isSecondary={isSecondary}/>} />
+              <Route path="settings" element={<Settings isAccent={isAccent} isSecondary={isSecondary}/>} />
+              <Route path="about" element={<About isAccent={isAccent} isSecondary={isSecondary}/>} />
+              <Route path="weather" element={<Weather isAccent={isAccent} isSecondary={isSecondary}/>
+              }/>
             </Route>
             <Route path="/pages" element={<Pages />}>
               <Route path="error" element={<Error />} />

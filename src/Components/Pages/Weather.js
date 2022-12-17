@@ -10,13 +10,12 @@ const Weather = (props) => {
   const [humidity, setHumidity] = useState("Range");
   const [cityName, setCityName] = useState("city");
   const [visibility, setVisibility] = useState("");
-  const [img,setImg]=useState("")
   const { city } = useContext(Context);
   const [value] = city;
   try {
     const city = mockData[value];
     const url =
-      `http://api.weatherstack.com/current?access_key=164100515159107f65e9af918238fb16&query=${city.lat},${city.lon}`;
+      `http://api.weatherstack.com/current?access_key=2d671684bf2550b98a5636cee2d8b26e&query=${city.lat},${city.lon}`;
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
@@ -26,13 +25,12 @@ const Weather = (props) => {
         setCityName(data.location.name);
         setHumidity(data.current.humidity);
         setVisibility(data.current.visibility);
-        setImg(data.current.weather_icons);
       });
   } catch (err) {
     return (
       <div className="m-auto width-600">
         <div>
-          {console.log(img)}
+        
           <CardEffect
             title={"ERROR !!"}
             content={"Get Back to Home.."}
